@@ -1,0 +1,41 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: abhilasha
+# "service" is the name of this project. This will also be added to your AWS resource names.
+service: project-serverless
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: ap-south-1
+
+package:
+    exclude:
+    - node_modules/** 
+
+plugins:
+  - serverless-offline
+ 
+
+functions:
+
+  register:
+    handler: handler.registerHandler
+    events:
+      - http:
+          path: register
+          method: post
+
+  confirm:
+    handler: handler.confirmHandler
+    events:
+      - http:
+          path: confirm
+          method: post
+
+  login:
+    handler: handler.login1Handler
+    events:
+      - http:
+          path: login
+          method: post
+        
