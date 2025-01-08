@@ -5,10 +5,11 @@ dotenv.config();
 
 const cognito=new AWS.CognitoIdentityServiceProvider({
     region:process.env.AWS_REGION})
-    
-    if (!process.env.COGNITO_CLIENT_ID || !process.env.COGNITO_CLIENT_SECRET) {
-        throw new Error("Missing required environment variables");
-      }
+
+
+    // if (!process.env.COGNITO_CLIENT_ID || !process.env.COGNITO_CLIENT_SECRET) {
+    //     throw new Error("Missing required environment variables");
+    //   }
       
 
 const calculateSecretHash = (username:string) => {
