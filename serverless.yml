@@ -38,4 +38,52 @@ functions:
       - http:
           path: login
           method: post
-        
+
+  # createTopic:
+  #   handler: handler.createTopicHandler
+  #   events:
+  #     - http:
+  #         path: createTopic
+  #         method: post
+ 
+  # subscribeToTopic:
+  #   handler: handler.subscribeToTopicHandler
+  #   events:
+  #     - http:
+  #         path: subscribeToTopic
+  #         method: post
+
+  publishMessage:
+    handler: handler.publishMessageHandler
+    events:
+      - http:
+          path: publish
+          method: post
+  
+  # createQueue:
+  #   handler: handler.createQueueHandler
+  #   events:
+  #     - http:
+  #         path: createQueue
+  #         method: post
+
+  sendMessageToQueue:
+    handler: handler.sendMessageToQueueHandler
+    events:
+      - http:
+          path: sendMessageQueue
+          method: post
+
+  receiveMessageToQueue:
+    handler: handler.receiveMessageToQueueHandler
+    events:
+      - http:
+          path: receiveMessage
+          method: get
+
+  sendEmailToQueue:
+    handler: handler.sendEmailToHandler
+    events:
+      - http:
+          path: sendEmailToQueue
+          method: post
