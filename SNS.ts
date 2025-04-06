@@ -84,19 +84,16 @@ const sns=new AWS.SNS({
           }
         })
       };
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        return {
-          statusCode: 500,
-          body: JSON.stringify({ error: error.message }),
-        };
-      } else {
-        return {
-          statusCode: 500,
-          body: JSON.stringify({ error: 'An unknown error occurred' }),
-        };
-      }
+    } catch (error) {
+      console.error("Error in message:", error);
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ error: (error as Error).message }),
+      };
     }
+
+
+    
   };
 
   

@@ -55,6 +55,8 @@ functions:
 
   publishMessage:
     handler: handler.publishMessageHandler
+    timeout: 30
+
     events:
       - http:
           path: publish
