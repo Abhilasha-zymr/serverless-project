@@ -6,7 +6,7 @@
   "dependencies": {
     "@aws-sdk/client-cognito-identity-provider": "^3.723.0",
     "aws-sdk": "^2.1692.0",
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.5.0"
   },
   "devDependencies": {
     "@types/aws-sdk": "^0.0.42",
