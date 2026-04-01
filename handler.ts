@@ -1,6 +1,7 @@
 import { sendEmail } from "./SES";
 import {  publishMessage} from "./SNS";
 import {  receiveMessage, sendMessage } from "./SQS";
+import { uploadObject, getObject, listObjects, deleteObject } from "./S3";
 import { register, confirm, login }from "./user"
 
 export const registerHandler=async(event:any)=>{
@@ -32,4 +33,16 @@ export const receiveMessageToQueueHandler=async(event:any)=>{
 }
 export const sendEmailToHandler=async(event:any)=>{
   return await sendEmail(event);
+}
+export const uploadObjectHandler=async(event:any)=>{
+  return await uploadObject(event);
+}
+export const getObjectHandler=async(event:any)=>{
+  return await getObject(event);
+}
+export const listObjectsHandler=async(event:any)=>{
+  return await listObjects(event);
+}
+export const deleteObjectHandler=async(event:any)=>{
+  return await deleteObject(event);
 }

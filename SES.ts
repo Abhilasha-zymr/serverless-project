@@ -5,7 +5,7 @@ const ses = new AWS.SES({ region: process.env.AWS_REGION});
 
 export const sendEmail=async(event:any)=>{
     try{
-    const {toAddress,subject,body}=JSON.parse(event.body);
+    const {toAddress,subject,body}=JSON.parse(event.body)
     const params={
         Destination: {
             ToAddresses: [toAddress],
@@ -16,7 +16,7 @@ export const sendEmail=async(event:any)=>{
             },
             Subject: { Data: subject },
           },
-         Source:"abhilasha.pawar@zymr.com"
+         Source: process.env.SOURCE_EMAIL! // Ensure SOURCE_EMAIL is verified in SES (sandbox requires verification)
     }
         const result = await ses.sendEmail(params).promise();
         console.log("Email sent successfully:", result);

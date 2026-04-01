@@ -3,32 +3,32 @@ import dotenv from "dotenv";
 dotenv.config();
 const sqs = new AWS.SQS({ region: process.env.AWS_REGION});
 
-// export const createQueue = async (event:any) => {
-//     try {
-//         const { queueName } = JSON.parse(event.body); 
-//         const params = {
-//             QueueName : queueName , 
-//         };
+export const createQueue = async (event:any) => {
+    try {
+        const { queueName } = JSON.parse(event.body); 
+        const params = {
+            QueueName : queueName , 
+        };
 
-//         const response = await sqs.createQueue(params).promise();
-//         return {
-//             statusCode: 201,
-//             body: JSON.stringify({ message: "queue created successfully", data: response }),
-//         };
-//     } catch (error: unknown) {
-//       if (error instanceof Error) {
-//         return {
-//           statusCode: 500,
-//           body: JSON.stringify({ error: error.message }),
-//         };
-//       } else {
-//         return {
-//           statusCode: 500,
-//           body: JSON.stringify({ error: 'An unknown error occurred' }),
-//         };
-//       }
-//     }
-// };
+        const response = await sqs.createQueue(params).promise();
+        return {
+            statusCode: 201,
+            body: JSON.stringify({ message: "queue created successfully", data: response }),
+        };
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return {
+          statusCode: 500,
+          body: JSON.stringify({ error: error.message }),
+        };
+      } else {
+        return {
+          statusCode: 500,
+          body: JSON.stringify({ error: 'An unknown error occurred' }),
+        };
+      }
+    }
+};
 
 
 export const sendMessage= async(event:any)=> {
@@ -40,7 +40,7 @@ export const sendMessage= async(event:any)=> {
             QueueUrl: process.env.QUE_URL!,
             
         }
-        const response = await sqs.sendMessage(params).promise();
+      const response = await sqs.sendMessage(params).promise();
     return {
       statusCode: 201,
       body: JSON.stringify({

@@ -7,6 +7,14 @@ provider:
   name: aws
   runtime: nodejs20.x
   region: ap-south-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:GetObject
+        - s3:PutObject
+        - s3:ListBucket
+        - s3:DeleteObject
+      Resource: "*"
 
 package:
     exclude:
@@ -88,4 +96,32 @@ functions:
     events:
       - http:
           path: sendEmailToQueue
+          method: post
+
+  uploadObject:
+    handler: handler.uploadObjectHandler
+    events:
+      - http:
+          path: uploadObject
+          method: post
+
+  getObject:
+    handler: handler.getObjectHandler
+    events:
+      - http:
+          path: getObject
+          method: post
+
+  listObjects:
+    handler: handler.listObjectsHandler
+    events:
+      - http:
+          path: listObjects
+          method: post
+
+  deleteObject:
+    handler: handler.deleteObjectHandler
+    events:
+      - http:
+          path: deleteObject
           method: post

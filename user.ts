@@ -102,7 +102,7 @@ export const confirm = async (event:any) => {
     try {
       const response = await cognito.initiateAuth(params).promise();
       return {
-        statusCode: 200,
+        statusCode: 200, 
         body: JSON.stringify({
           message: "Login successful",
           
